@@ -26,7 +26,6 @@ As not all schemes follow this format sometimes the scheme-dir will need to be s
 			     ;; Otherwise Rip out the part which appears to be the scheme-dir
 			     (if (position #\- scheme :test #'equalp)
 				 ;; Check if this is a valid path
-
 				 (let ((path-to-test (set-scheme-dir (subseq scheme 0 (position #\- scheme :test #'equalp)))))
 				   (if (directory path-to-test)
 				       ;; Return path-to-test
@@ -63,5 +62,4 @@ As not all schemes follow this format sometimes the scheme-dir will need to be s
 			   (if (not (equal selection ".."))
 			       (progn
 				 (setf continue nil)
-				 (format t "~a" (pathname-directory scheme-dir))
 				 (load-theme selection scheme-dir)))))))))))
