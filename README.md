@@ -9,12 +9,19 @@ This repository contains a Base16 Template for StumpWM and a StumpWM Module whic
 
 In order to install the StumpWM Module you require the cl-base16 dependency which is not on quicklisp but can be found here: [https://github.com/tpine/cl-base16](https://github.com/tpine/cl-base16) and installed into your quicklisp local projects directory.
 
-After that place the module in your module load path and re-load the set of modules StumpWM knows about to use the module without restarting StumpWM using:
+# Example Usage #
 
 ```lisp
 (set-module-dir "/path/to/stumpwm/module/dir/")
 
 (load-module :stumpwm-base16)
+
+;;; On first run execute this to pull the themes from github
+;;; This command may take some time to complete
+(stumpwm-base16:update)
+
+;;; Load theme by passing a string with the theme name
+(stumpwm-base16:load-theme "dracula")
 ```
 
 # Using stumpwm-base16 #

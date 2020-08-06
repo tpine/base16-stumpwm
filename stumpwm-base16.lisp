@@ -3,7 +3,11 @@
 (in-package #:stumpwm-base16)
 
 (export '(load-theme
-	  select-theme))
+	  select-theme
+	  update))
+
+(defun update ()
+  (cl-base16:update))
 
 (stumpwm:defcommand load-theme (scheme &optional (scheme-dir nil)) ((:string "Scheme: ") (:type nil))
   "Load the specified base16 theme into StumpWM.
