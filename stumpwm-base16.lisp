@@ -52,7 +52,7 @@ As not all schemes follow this format sometimes the scheme-dir will need to be s
 			(declare (ignore value))
 			(setf menu (append menu (list key))))
 		      (yaml:parse (merge-pathnames "schemes/list.yaml" cl-base16:*source-dir*)))
-	     (let ((scheme-dir (stumpwm:select-from-menu (stumpwm:current-screen) menu)))
+	     (let ((scheme-dir (car (stumpwm:select-from-menu (stumpwm:current-screen) menu))))
 	       (if (eq scheme-dir nil)
 		   (setf continue nil)
 		   (progn
@@ -60,7 +60,7 @@ As not all schemes follow this format sometimes the scheme-dir will need to be s
 		     (mapc (lambda (scheme)
 			     (setf menu (append menu (list (uiop:split-name-type (file-namestring scheme))))))
 			   (directory (merge-pathnames (concatenate 'string "schemes/" scheme-dir "/*.yaml") cl-base16:*source-dir*)))
-		     (let ((selection (stumpwm:select-from-menu (stumpwm:current-screen) menu)))
+		     (let ((selection (car (stumpwm:select-from-menu (stumpwm:current-screen) menu))))
 		       (if (eq selection nil)
 			   (setf continue nil)
 			   (if (not (equal selection ".."))
